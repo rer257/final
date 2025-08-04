@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Grid</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #ffffff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 20px;
+      max-width: 600px;
+      max-height: 600px;
+      width: 90vw;
+      height: 90vh;
+    }
+
+    .grid-item {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      max-width: 120px;
+      max-height: 120px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-container">
+    <!-- 1 -->
+    <div class="grid-item" data-index="0">
+      <img src="images/angry.webp" alt="Image 1" />
+      <audio src="audio/angry.mp3"></audio>
+    </div>
+
+    <!-- 2 -->
+    <div class="grid-item" data-index="1">
+      <img src="images/tired.webp" alt="Image 2" />
+      <audio src="audio/tired.mp3"></audio>
+    </div>
+
+    <!-- 3 -->
+    <div class="grid-item" data-index="2">
+      <img src="images/sad.webp" alt="Image 3" />
+      <audio src="audio/sad.mp3"></audio>
+    </div>
+
+    <!-- 4 -->
+    <div class="grid-item" data-index="3">
+      <img src="images/calm.webp" alt="Image 4" />
+      <audio src="audio/calm.mp3"></audio>
+    </div>
+
+    <!-- 5 -->
+    <div class="grid-item" data-index="4">
+      <img src="images/frustrated.webp" alt="Image 5" />
+      <audio src="audio/frustrated.mp3"></audio>
+    </div>
+
+    <!-- 6 -->
+    <div class="grid-item" data-index="5">
+      <img src="images/nervous.webp" alt="Image 6" />
+      <audio src="audio/nervous.mp3"></audio>
+    </div>
+
+    <!-- 7 -->
+    <div class="grid-item" data-index="6">
+      <img src="images/scared.webp" alt="Image 7" />
+      <audio src="audio/scared.mp3"></audio>
+    </div>
+
+    <!-- 8 -->
+    <div class="grid-item" data-index="7">
+      <img src="images/shy.webp" alt="Image 8" />
+      <audio src="audio/shy.mp3"></audio>
+    </div>
+
+    <!-- 9 -->
+    <div class="grid-item" data-index="8">
+      <img src="images/excited.webp" alt="Image 9" />
+      <audio src="audio/excited.mp3"></audio>
+    </div>
+
+    <!-- 10 -->
+    <div class="grid-item" data-index="9">
+      <img src="images/quiet.webp" alt="Image 10" />
+      <audio src="audio/quiet.mp3"></audio>
+    </div>
+
+    <!-- 11 -->
+    <div class="grid-item" data-index="10">
+      <img src="images/happy.webp" alt="Image 11" />
+      <audio src="audio/happy.mp3"></audio>
+    </div>
+
+    <!-- 12 -->
+    <div class="grid-item" data-index="11">
+      <img src="images/content.webp" alt="Image 12" />
+      <audio src="audio/content.mp3"></audio>
+    </div>
+
+    <!-- 13 -->
+    <div class="grid-item" data-index="12">
+      <img src="images/silly.webp" alt="Image 13" />
+      <audio src="audio/silly.mp3"></audio>
+    </div>
+
+    <!-- 14 -->
+    <div class="grid-item" data-index="13">
+      <img src="images/proud.webp" alt="Image 14" />
+      <audio src="audio/proud.mp3"></audio>
+    </div>
+
+    <!-- 15 -->
+    <div class="grid-item" data-index="14">
+      <img src="images/hurt.webp" alt="Image 15" />
+      <audio src="audio/hurt.mp3"></audio>
+    </div>
+
+    <!-- 16 -->
+    <div class="grid-item" data-index="15">
+      <img src="images/loved.webp" alt="Image 16" />
+      <audio src="audio/loved.mp3"></audio>
+    </div>
+  </div>
+
+  <script>
+    const gridItems = document.querySelectorAll('.grid-item');
+    let currentAudio = null;
+
+    gridItems.forEach(item => {
+      const audio = item.querySelector('audio');
+
+      item.addEventListener('click', () => {
+        if (currentAudio && currentAudio !== audio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+
+        if (audio.paused) {
+          audio.play();
+          currentAudio = audio;
+        } else {
+          audio.pause();
+          currentAudio = null;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
